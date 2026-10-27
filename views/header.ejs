@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katalog Produk - Lab EC2 &amp; RDS</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <a href="/" class="brand">📦 Katalog Produk</a>
+  <a href="/products/new" class="btn">+ Tambah Produk</a>
+</header>
+<div class="info">
+  Dilayani oleh <b><%= server.hostname %></b> · Instance <b><%= server.instanceId %></b> · AZ <b><%= server.az %></b> · DB <b><%= dbHost %></b>
+</div>
+<main>

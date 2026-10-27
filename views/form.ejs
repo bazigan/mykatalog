@@ -1,0 +1,14 @@
+<%- include('header') %>
+<h2><%= title %></h2>
+<form class="form" method="post" action="<%= action %>">
+  <label>Nama Produk <input type="text" name="name" required value="<%= product.name || '' %>"></label>
+  <label>Kategori <input type="text" name="category" value="<%= product.category || '' %>"></label>
+  <label>Harga (Rp) <input type="number" name="price" min="0" value="<%= product.price ? Number(product.price) : '' %>"></label>
+  <label>Stok <input type="number" name="stock" min="0" value="<%= product.stock ?? '' %>"></label>
+  <label>Deskripsi <textarea name="description" rows="3"><%= product.description || '' %></textarea></label>
+  <div>
+    <button type="submit">Simpan</button>
+    <a href="/">Batal</a>
+  </div>
+</form>
+<%- include('footer') %>

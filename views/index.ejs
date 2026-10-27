@@ -1,0 +1,26 @@
+<%- include('header') %>
+<form class="search" method="get" action="/">
+  <input type="text" name="q" value="<%= q %>" placeholder="Cari nama atau kategori...">
+  <button type="submit">Cari</button>
+</form>
+<% if (products.length === 0) { %>
+  <p class="empty">Belum ada produk.</p>
+<% } %>
+<div class="grid">
+  <% products.forEach(p => { %>
+    <div class="card">
+      <span class="cat"><%= p.category %></span>
+      <h3><%= p.name %></h3>
+      <p class="desc"><%= p.description %></p>
+      <p class="price">Rp <%= Number(p.price).toLocaleString('id-ID') %></p>
+      <p class="stock">Stok: <%= p.stock %></p>
+      <div class="actions">
+        <a href="/products/<%= p.id %>/edit">Edit</a>
+        <form method="post" action="/products/<%= p.id %>/delete" onsubmit="return confirm('Hapus produk ini?')">
+          <button type="submit" class="danger">Hapus</button>
+        </form>
+      </div>
+    </div>
+  <% }) %>
+</div>
+<%- include('footer') %>

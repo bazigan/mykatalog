@@ -1,0 +1,25 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6f8; color: #222; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; background: #232f3e; }
+header .brand { color: #fff; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+.btn, button { background: #ff9900; color: #111; border: 0; padding: 8px 14px; border-radius: 6px; cursor: pointer; text-decoration: none; font-weight: 600; font-size: .9rem; }
+button.danger { background: #d13212; color: #fff; }
+.info { background: #e8eef5; padding: 8px 24px; font-size: .85rem; color: #444; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.search { display: flex; gap: 8px; margin-bottom: 20px; }
+.search input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.card { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); display: flex; flex-direction: column; }
+.card h3 { margin: 8px 0 4px; font-size: 1.05rem; }
+.cat { font-size: .75rem; background: #eef; color: #335; padding: 2px 8px; border-radius: 10px; align-self: flex-start; }
+.desc { color: #666; font-size: .9rem; flex: 1; }
+.price { font-weight: 700; color: #b12704; margin: 4px 0; }
+.stock { font-size: .85rem; color: #555; margin: 0 0 10px; }
+.actions { display: flex; gap: 10px; align-items: center; }
+.actions form { margin: 0; }
+.form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+.form input, .form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 6px; font: inherit; font-weight: 400; }
+.error { background: #fee; padding: 12px; border-radius: 6px; white-space: pre-wrap; }
+.empty { color: #777; }
+footer { text-align: center; color: #888; font-size: .8rem; padding: 24px; }
