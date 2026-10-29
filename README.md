@@ -45,7 +45,7 @@ Salin isi [`scripts/userdata.sh`](scripts/userdata.sh) ke kolom **Advanced detai
 ### Opsi B — Manual via SSH
 
 ```bash
-sudo dnf install -y nodejs git
+sudo dnf install -y nodejs npm git
 git clone https://github.com/bazigan/mykatalog.git
 cd mykatalog
 npm install
