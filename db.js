@@ -1,10 +1,25 @@
 const mysql = require('mysql2/promise');
+const fs = require('fs');
+const path = require('path');
+
+
+// SSL untuk RDS (wajib jika require_secure_transport=ON)
+function sslConfig() {
+  if (process.env.DB_SSL === 'false') return undefined; // untuk MySQL lokal tanpa SSL
+  const caPath = process.env.DB_SSL_CA || path.join(__dirname, 'global-bundle.pem');
+  if (fs.existsSync(caPath)) {
+    return { ca: fs.readFileSync(caPath), rejectUnauthorized: true }; // terenkripsi + sertifikat diverifikasi
+  }
+  console.warn('CA bundle RDS tidak ditemukan, SSL tetap aktif tapi sertifikat tidak diverifikasi.');
+  return { rejectUnauthorized: false };
+}
 
 const config = {
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT || 3306),
   user: process.env.DB_USER || 'admin',
   password: process.env.DB_PASSWORD || '',
+  ssl: sslConfig(),
 };
 const DB_NAME = process.env.DB_NAME || 'katalog';
 
