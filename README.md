@@ -46,8 +46,8 @@ Salin isi [`scripts/userdata.sh`](scripts/userdata.sh) ke kolom **Advanced detai
 
 ```bash
 sudo dnf install -y nodejs git
-git clone https://github.com/bazigan/lab-ec2-rds-katalog.git
-cd lab-ec2-rds-katalog
+git clone https://github.com/bazigan/mykatalog.git
+cd mykatalog
 npm install
 cp .env.example .env
 nano .env          # isi DB_HOST, DB_USER, DB_PASSWORD
@@ -101,14 +101,14 @@ mysql -h <endpoint-rds> -u admin -p -e "SELECT * FROM katalog.products;"
 ## Background App
 
 ```bash
-sudo mv ~/lab-ec2-rds-katalog /opt/
+sudo mv ~/mykatalog /opt/
 sudo tee /etc/systemd/system/katalog.service > /dev/null <<'EOF'
 [Unit]
 Description=Katalog Produk (Lab EC2 RDS)
 After=network-online.target
 
 [Service]
-WorkingDirectory=/opt/lab-ec2-rds-katalog
+WorkingDirectory=/opt/mykatalog
 ExecStart=/usr/bin/node app.js
 Restart=always
 RestartSec=5
