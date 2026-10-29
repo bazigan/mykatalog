@@ -96,3 +96,28 @@ mysql -h <endpoint-rds> -u admin -p -e "SELECT * FROM katalog.products;"
 | `DB_USER` | `admin` | Username |
 | `DB_PASSWORD` | – | Password |
 | `DB_NAME` | `katalog` | Nama database (dibuat otomatis) |
+
+
+## Background App
+
+```bash
+sudo mv ~/lab-ec2-rds-katalog /opt/
+sudo tee /etc/systemd/system/katalog.service > /dev/null <<'EOF'
+[Unit]
+Description=Katalog Produk (Lab EC2 RDS)
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/lab-ec2-rds-katalog
+ExecStart=/usr/bin/node app.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now katalog
+sudo systemctl status katalog
+```
